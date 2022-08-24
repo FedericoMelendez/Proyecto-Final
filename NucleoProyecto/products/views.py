@@ -96,6 +96,17 @@ def list_peripherals(request):# Lista de Perifericos
     return render(request, 'peripherals/list_peripherals.html', context=context)
 
 
+def list_all(request):
+    all_peripherals = Perifericos.objects.all()
+    all_monitors = Monitores.objects.all()
+    all_notebooks = Notebooks.objects.all()
+    context = {
+        'perifericos':all_peripherals,
+        'monitores':all_monitors,
+        'notebooks':all_notebooks
+        }
+    return render(request, 'all_products.html', context=context)
+
 def search_products(request): #Busqueda de todos los productos
     search = request.GET['search']
     products_notebooks =Notebooks.objects.filter(name__icontains=search)
