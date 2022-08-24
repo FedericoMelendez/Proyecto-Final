@@ -3,5 +3,5 @@ from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def Index (request):
-    return HttpResponse('Bienvenidos a todos ')
+def saludo (request):
+    return HttpResponse('Bienvenidos a todos ') #Prueba de servidor con la funcion saludo.
