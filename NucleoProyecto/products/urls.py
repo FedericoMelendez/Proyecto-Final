@@ -1,11 +1,17 @@
 from django.urls import path
-from products.views import create_notebook
+from products.views import create_notebook,list_notebooks,create_monitor,list_monitors,create_peripherals,list_peripherals,search_products
 
 urlpatterns = [
     path ('new-notebook/',create_notebook,name='create_notebook'),
+    path ('list-notebooks/',list_notebooks, name='list_notebooks'),
 
-    path ('list-notebooks/',lista_notebooks, name='lista_notebooks'),
-    path ('search-notebooks/',search_notebooks, name='search_notebooks'),
-    path ('delete-notebook/<int:pk>/',delete_notebook, name='delete_notebook')
 
+    path ('new-monitor/',create_monitor,name='create_monitor'),
+    path ('list-monitors/',list_monitors, name='list_monitors'),
+
+    path ('new-peripherals/',create_peripherals,name='create_peripherals'),
+    path ('list-peripherals/',list_peripherals, name='list_peripherals'),
+
+
+    path ('search-products/',search_products, name='search_products')
 ]
