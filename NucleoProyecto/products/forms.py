@@ -1,7 +1,7 @@
 from socket import fromshare
 from django import forms
 
-class Form_notebooks(forms.Form):
+class Formulario_notebooks(forms.Form):
     name = forms.CharField(max_length=200) #Nombre 
     brand = forms.CharField(max_length=50) #Marca
     model = forms.CharField(max_length=100) #Modelo
@@ -10,6 +10,19 @@ class Form_notebooks(forms.Form):
     display = forms.CharField(max_length=50) # Tamaño de pantalla
     capacity = forms.CharField(max_length=50) # Capacidad de almacenamiento
     price = forms.FloatField() #Precio
-    is_active = forms.BooleanField(default=True)
     stock = forms.IntegerField()
-    
+
+class Formulario_monitores(forms.Form):
+    name = forms.CharField(max_length=200)
+    brand = forms.CharField(max_length=50)
+    model = forms.CharField(max_length=100)
+    display = forms.CharField(max_length=50)
+    price = forms.FloatField()
+    stock = forms.IntegerField()
+
+class Formulario_perifericos (forms.Form):
+    name = forms.CharField(max_length=200)
+    brand = forms.CharField(max_length=50)
+    type = forms.CharField(max_length=50)
+    price = forms.FloatField()
+    stock = forms.IntegerField()
