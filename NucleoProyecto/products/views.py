@@ -98,8 +98,8 @@ def list_peripherals(request):# Lista de Perifericos
 
 def search_products(request): #Busqueda de todos los productos
     search = request.GET['search']
-    products_notebooks =Notebooks.objects.filter(model__icontains=search)
-    products_monitors = Monitores.objects.filter(model__icontains=search)
+    products_notebooks =Notebooks.objects.filter(name__icontains=search)
+    products_monitors = Monitores.objects.filter(name__icontains=search)
     products_peripherals = Perifericos.objects.filter(name__icontains=search)
     context = {
         'products_notebooks': products_notebooks,
