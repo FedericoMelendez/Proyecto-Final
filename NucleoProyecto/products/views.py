@@ -4,29 +4,30 @@ from products.forms import Formulario_notebooks, Formulario_monitores, Formulari
 
 #  Notebooks
 
-def create_notebook(request):#Crear Notebook
+def create_notebook(request): #Crear Notebook
+
     if request.method == 'POST':
         form = Formulario_notebooks(request.POST)
 
         if form.is_valid():
             Notebooks.objects.create(
-                name = form.cleaned_data['nombre'],
-                brand = form.cleaned_data['marca'],
-                model = form.cleaned_data['modelo'], 
-                proccesor = form.cleaned_data['procesador'],
+                name = form.cleaned_data['name'],
+                brand = form.cleaned_data['brand'],
+                model = form.cleaned_data['model'], 
+                processor = form.cleaned_data['processor'],
                 ram = form.cleaned_data['ram'],
-                display = form.cleaned_data['pantalla'],
-                capacity = form.cleaned_data['almacenamiento'],
-                price = form.cleaned_data['precio'],
+                display = form.cleaned_data['display'],
+                capacity = form.cleaned_data['capacity'],
+                price = form.cleaned_data['price'],
                 stock = form.cleaned_data['stock']
             )
 
             return redirect(list_notebooks)
 
-        elif request.method == 'GET':
+    elif request.method == 'GET':
             form = Formulario_notebooks()
             context = {'form':form}
-            return render(request, 'notebooks/new_notebook.html', context=context)
+            return render(request,'notebooks/new_notebook.html', context=context)
 
 def list_notebooks(request):#Lista de Notebooks
     notebooks = Notebooks.objects.all() 
@@ -44,17 +45,17 @@ def create_monitor(request):#Crear Monitor
 
         if form.is_valid():
             Monitores.objects.create(
-                name = form.cleaned_data['nombre'],
-                brand = form.cleaned_data['marca'],
-                model = form.cleaned_data['modelo'], 
-                display = form.cleaned_data['pantalla'],
-                price = form.cleaned_data['precio'],
+                name = form.cleaned_data['name'],
+                brand = form.cleaned_data['brand'],
+                model = form.cleaned_data['model'], 
+                display = form.cleaned_data['display'],
+                price = form.cleaned_data['price'],
                 stock = form.cleaned_data['stock']
             )
 
             return redirect(list_monitors)
 
-        elif request.method == 'GET':
+    elif request.method == 'GET':
             form = Formulario_monitores()
             context = {'form':form}
             return render(request, 'monitors/new_monitor.html', context=context)
@@ -74,16 +75,16 @@ def create_peripherals(request):# Crear Perifericos
 
         if form.is_valid():
             Perifericos.objects.create(
-                name = form.cleaned_data['nombre'],
-                brand = form.cleaned_data['marca'], 
-                type = form.cleaned_data['tipo'],
-                price = form.cleaned_data['precio'],
+                name = form.cleaned_data['name'],
+                brand = form.cleaned_data['brand'], 
+                type = form.cleaned_data['type'],
+                price = form.cleaned_data['price'],
                 stock = form.cleaned_data['stock']
             )
 
             return redirect(list_peripherals)
 
-        elif request.method == 'GET':
+    elif request.method == 'GET':
             form = Formulario_perifericos()
             context = {'form':form}
             return render(request, 'peripherals/new_peripherals.html', context=context)

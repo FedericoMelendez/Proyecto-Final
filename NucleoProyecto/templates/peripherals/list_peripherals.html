@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Perifericos
+{% endblock %}
+
+{% block cambio_contenido %}
+
+    {% for periferico in perifericos %}
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.profesionalreview.com/wp-content/uploads/2021/04/teclados-tkl-5-1280x720.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{periferico.name}}</h5>
+        <p class="card-text">Marca: {{periferico.brand}}</p>
+        <p class="card-text">Modelo: {{periferico.type}}</p>
+        <p class="card-text">Precio: {{periferico.price}}</p>
+        <p class="card-text">Stock: {{periferico.stock}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}  

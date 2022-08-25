@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Moinitores
+{% endblock %}
+
+{% block cambio_contenido %}
+
+    {% for monitor in monitores %}
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://snpi.dell.com/snp/images/products/large/es-ar~210-AUND/210-AUND_v1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{monitor.name}}</h5>
+        <p class="card-text">Marca: {{monitor.brand}}</p>
+        <p class="card-text">Modelo: {{monitor.model}}</p>
+        <p class="card-text">Pulgadas: {{monitor.display}}</p>
+        <p class="card-text">Precio: {{monitor.price}}</p>
+        <p class="card-text">Stock: {{monitor.stock}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}  
