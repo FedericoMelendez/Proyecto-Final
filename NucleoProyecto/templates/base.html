@@ -24,6 +24,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/products/list-notebooks/">Todas las Notebooks <span class="sr-only">(current)</span></a>
                 </li>
@@ -33,6 +34,21 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/products/list-peripherals/">Todos los Perifericos <span class="sr-only">(current)</span></a>
                 </li>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/users/logout/">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/users/login/">Login</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/users/register/">Register</a>
+            </li>
+            {% endif %}
+
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                         aria-expanded="false">
