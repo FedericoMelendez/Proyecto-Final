@@ -110,12 +110,12 @@ def list_all(request):
 
 def search_products(request): #Busqueda de todos los productos
     search = request.GET['search']
-    products_notebooks =Notebooks.objects.filter(name__icontains=search)
-    products_monitors = Monitores.objects.filter(name__icontains=search)
-    products_peripherals = Perifericos.objects.filter(name__icontains=search)
+    notebooks =Notebooks.objects.filter(name__icontains=search)
+    monitors = Monitores.objects.filter(name__icontains=search)
+    peripherals = Perifericos.objects.filter(name__icontains=search)
     context = {
-        'products_notebooks': products_notebooks,
-        'products_monitors': products_monitors,
-        'products_peripherals':products_peripherals
+        'notebooks': notebooks,
+        'monitors': monitors,
+        'peripherals':peripherals
     }
     return render(request, 'search_products.html', context=context)
