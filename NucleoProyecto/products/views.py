@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from products.models import Notebooks, Monitores ,Perifericos
 from products.forms import Formulario_notebooks, Formulario_monitores, Formulario_perifericos
+from django.contrib.auth.decorators import login_required
 
 #  Notebooks
-
+@login_required
 def create_notebook(request): #Crear Notebook
 
     if request.method == 'POST':
@@ -29,6 +30,7 @@ def create_notebook(request): #Crear Notebook
             context = {'form':form}
             return render(request,'notebooks/new_notebook.html', context=context)
 
+
 def list_notebooks(request):#Lista de Notebooks
     notebooks = Notebooks.objects.all() 
     context = {
@@ -38,7 +40,7 @@ def list_notebooks(request):#Lista de Notebooks
 
 
 # Monitores
-
+@login_required
 def create_monitor(request):#Crear Monitor
     if request.method == 'POST':
         form = Formulario_monitores(request.POST)
@@ -68,7 +70,7 @@ def list_monitors(request):#Lista de Monitores
     return render(request, 'monitors/list_monitors.html', context=context)
 
 # Perifericos 
-
+@login_required
 def create_peripherals(request):# Crear Perifericos
     if request.method == 'POST':
         form = Formulario_perifericos(request.POST)
