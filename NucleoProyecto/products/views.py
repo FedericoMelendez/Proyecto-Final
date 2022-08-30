@@ -1,3 +1,5 @@
+from re import search
+from unicodedata import name
 from django.shortcuts import render, redirect
 from products.models import Notebooks, Monitores ,Perifericos
 from products.forms import Formulario_notebooks, Formulario_monitores, Formulario_perifericos
@@ -114,8 +116,8 @@ def search_products(request): #Busqueda de todos los productos
     monitors = Monitores.objects.filter(name__icontains=search)
     peripherals = Perifericos.objects.filter(name__icontains=search)
     context = {
-        'notebooks': notebooks,
-        'monitors': monitors,
+        'notebooks':notebooks,
+        'monitors':monitors,
         'peripherals':peripherals
     }
     return render(request, 'search_products.html', context=context)
