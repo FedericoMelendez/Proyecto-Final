@@ -11,5 +11,6 @@ urlpatterns = [
     path ('saludo/', saludo, name='saludo'), #Prueba del servidor con la funcion saludo
     path('products/',include ('products.urls')),
     path ('', index, name='index'),
+    path ('index/', index, name='index'),
     path('users/', include ('users.urls')),
 ]
