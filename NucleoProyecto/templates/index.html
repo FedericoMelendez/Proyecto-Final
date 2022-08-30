@@ -5,15 +5,8 @@
 {% endblock %}
 
 
-{% block contenido_que_cambia %}
+{% block cambio_contenido %}
 
 <h1>Este es el index</h1>
-<h2>{{request.user.is_authenticated}}</h2>
-
-{% if message %}
-
-    <h2>{{message}}</h2>
-
-{% endif %}
 
 {% endblock %}
