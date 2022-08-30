@@ -1,5 +1,3 @@
-from re import search
-from unicodedata import name
 from django.shortcuts import render, redirect
 from products.models import Notebooks, Monitores ,Perifericos
 from products.forms import Formulario_notebooks, Formulario_monitores, Formulario_perifericos
