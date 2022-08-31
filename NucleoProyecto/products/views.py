@@ -117,6 +117,46 @@ def list_monitors(request):#Lista de Monitores
         }
     return render(request, 'monitors/list_monitors.html', context=context)
 
+def delete_monitor (request, pk):
+    if request.method == 'GET':
+        monitor = Monitores.objects.get(pk=pk)
+        context = {'monitor':monitor}
+        return render(request, 'monitors/delete_monitor.html', context=context)
+    elif request.method == 'POST':
+        monitor = Monitores.objects.get(pk=pk)
+        monitor.delete()
+        return redirect(list_monitors)
+
+
+def update_monitor(request, pk):
+    if request.method == 'POST':
+        form = Formulario_monitores(request.POST)
+        if form.is_valid():
+            monitor = Monitores.objects.get(id=pk)
+            monitor.name = form.cleaned_data['name']
+            monitor.brand = form.cleaned_data['brand']
+            monitor.model = form.cleaned_data['model']
+            monitor.display = form.cleaned_data['display']
+            monitor.price = form.cleaned_data['price']
+            monitor.stock = form.cleaned_data['stock']
+            monitor.save()
+
+            return redirect(list_monitors)
+
+
+    elif request.method == 'GET':
+        monitor = Monitores.objects.get(id=pk)
+
+        form = Formulario_monitores(initial={
+                                        'name':monitor.name,
+                                        'brand':monitor.brand,
+                                        'model':monitor.model,
+                                        'display':monitor.display,
+                                        'price':monitor.price,
+                                        'stock':monitor.stock})
+        context = {'form':form}
+        return render(request, 'monitors/update_monitor.html', context=context)
+
 # Perifericos 
 @login_required
 def create_peripherals(request):# Crear Perifericos

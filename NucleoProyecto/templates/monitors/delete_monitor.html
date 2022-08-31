@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    delete_monitor
+{% endblock %}
+
+{% block cambio_contenido %}
+
+<p>Nombre del monitor : {{monitor.name}}</p>
+<p>Marca del monitor : {{monitor.brand}}</p>
+<p>Precio del monitor : {{monitor.price}}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+        <p><input type="submit" value="Borrar"></p>
+</form>
+
+
+{% endblock %}

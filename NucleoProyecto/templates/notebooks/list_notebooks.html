@@ -16,8 +16,11 @@
     <p class="card-text">Modelo: {{notebook.model}}</p>
     <p class="card-text">Procesador: {{notebook.processor}}</p>
     <p class="card-text">Precio: {{notebook.price}}</p>
-    <a href="/products/update-notebook/{{notebook.id}}/" class="btn btn-primary">Editar</a>
-    <a href="/products/delete-notebook/{{notebook.id}}/" class="btn btn-danger">Borrar</a>
+    {% if request.user.is_superuser %}
+            <a href="/products/update-notebook/{{notebook.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-notebook/{{notebook.id}}/" class="btn btn-danger">Borrar</a>
+            {% endif %}
+        <a href="#" class="btn btn-primary">Ver mas detalles</a>
     </div>
 </div>
 {% endfor %}

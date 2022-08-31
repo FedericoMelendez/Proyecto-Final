@@ -17,6 +17,10 @@
         <p class="card-text">Pulgadas: {{monitor.display}}</p>
         <p class="card-text">Precio: {{monitor.price}}</p>
         <p class="card-text">Stock: {{monitor.stock}}</p>
+            {% if request.user.is_superuser %}
+             <a href="/products/update-monitor/{{monitor.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-monitor/{{monitor.id}}/" class="btn btn-danger">Borrar</a>
+            {% endif %}
         <a href="#" class="btn btn-primary">Ver mas detalles</a>
         </div>
     </div>
