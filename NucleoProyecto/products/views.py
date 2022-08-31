@@ -39,7 +39,7 @@ def list_notebooks(request):#Lista de Notebooks
         }
     return render(request, 'notebooks/list_notebooks.html', context=context)
 
-
+@login_required
 def delete_notebook (request, pk):
     if request.method == 'GET':
         notebook = Notebooks.objects.get(pk=pk)
@@ -50,7 +50,7 @@ def delete_notebook (request, pk):
         notebook.delete()
         return redirect(list_notebooks)
 
-
+@login_required
 def update_notebook(request, pk):
     if request.method == 'POST':
         form = Formulario_notebooks(request.POST)
@@ -117,6 +117,7 @@ def list_monitors(request):#Lista de Monitores
         }
     return render(request, 'monitors/list_monitors.html', context=context)
 
+@login_required
 def delete_monitor (request, pk):
     if request.method == 'GET':
         monitor = Monitores.objects.get(pk=pk)
@@ -127,7 +128,7 @@ def delete_monitor (request, pk):
         monitor.delete()
         return redirect(list_monitors)
 
-
+@login_required
 def update_monitor(request, pk):
     if request.method == 'POST':
         form = Formulario_monitores(request.POST)
@@ -185,6 +186,45 @@ def list_peripherals(request):# Lista de Perifericos
         'perifericos':peripherals
         }
     return render(request, 'peripherals/list_peripherals.html', context=context)
+
+@login_required
+def delete_peripheral (request, pk):
+    if request.method == 'GET':
+        peripheral = Perifericos.objects.get(pk=pk)
+        context = {'peripheral':peripheral}
+        return render(request, 'peripherals/delete_peripherals.html', context=context)
+    elif request.method == 'POST':
+        peripheral = Perifericos.objects.get(pk=pk)
+        peripheral.delete()
+        return redirect(list_peripherals)
+
+@login_required
+def update_peripheral(request, pk):
+    if request.method == 'POST':
+        form = Formulario_perifericos(request.POST)
+        if form.is_valid():
+            peripherals = Perifericos.objects.get(id=pk)
+            peripherals.name = form.cleaned_data['name']
+            peripherals.brand = form.cleaned_data['brand']
+            peripherals.type = form.cleaned_data['type']
+            peripherals.price = form.cleaned_data['price']
+            peripherals.stock = form.cleaned_data['stock']
+            peripherals.save()
+
+            return redirect(list_peripherals)
+
+
+    elif request.method == 'GET':
+        peripherals = Perifericos.objects.get(id=pk)
+
+        form = Formulario_perifericos(initial={
+                                        'name':peripherals.name,
+                                        'brand':peripherals.brand,
+                                        'type':peripherals.type,
+                                        'price':peripherals.price,
+                                        'stock':peripherals.stock})
+        context = {'form':form}
+        return render(request, 'peripherals/update_peripherals.html', context=context)
 
 
 def search_products(request): #Busqueda de todos los productos

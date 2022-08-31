@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    delete_peripherals
+{% endblock %}
+
+{% block cambio_contenido %}
+
+<p>Nombre del periferico: {{peripheral.name}}</p>
+<p>Marca del periferico : {{peripheral.brand}}</p>
+<p>Precio del periferico : {{peripheral.price}}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+        <p><input type="submit" value="Borrar"></p>
+</form>
+
+
+{% endblock %}
