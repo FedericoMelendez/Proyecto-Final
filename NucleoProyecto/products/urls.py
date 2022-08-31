@@ -1,6 +1,6 @@
 from django.urls import path
 from products.views import create_notebook,list_notebooks,create_monitor,list_monitors,create_peripherals,list_peripherals,search_products,\
-    delete_notebook,update_notebook,delete_monitor,update_monitor , delete_peripheral , update_peripheral , Detail_notebook
+    delete_notebook,update_notebook,delete_monitor,update_monitor , delete_peripheral , update_peripheral , Detail_notebook , Detail_peripheral
 
 urlpatterns = [
     path ('new-notebook/',create_notebook,name='new-notebook'),
@@ -19,6 +19,8 @@ urlpatterns = [
     path ('list-peripherals/',list_peripherals, name='list_peripherals'),
     path ('delete-peripheral/<int:pk>/', delete_peripheral, name='delete-peripheral'),
     path ('update-peripheral/<int:pk>/', update_peripheral, name='update_peripheral'),
+    path ('detail-peripheral/<int:pk>/', Detail_peripheral.as_view(), name='detail-peripheral'),
+
 
 
     path ('search-products/',search_products, name='search_products')

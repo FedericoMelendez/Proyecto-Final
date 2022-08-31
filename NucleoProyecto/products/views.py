@@ -231,6 +231,13 @@ def update_peripheral(request, pk):
         return render(request, 'peripherals/update_peripherals.html', context=context)
 
 
+
+class Detail_peripheral(DetailView):
+    model= Perifericos
+    template_name= 'peripherals/detail_peripheral.html'
+
+
+
 def search_products(request): #Busqueda de todos los productos
 
     search = request.GET['search']
