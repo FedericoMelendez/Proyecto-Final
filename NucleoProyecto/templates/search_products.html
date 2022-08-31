@@ -15,6 +15,10 @@
             <p class="card-text">Marca: {{notebook.brand}}</p>
             <p class="card-text">Modelo: {{notebook.model}}</p>
             <p class="card-text">Precio: {{notebook.price}}</p>
+            {% if request.user.is_superuser %}
+            <a href="/products/update-notebook/{{notebook.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-notebook/{{notebook.id}}/" class="btn btn-danger">Borrar</a>
+            {% endif %}
             <a href="#" class="btn btn-primary">Ver Detalle</a>
         </div>
     </div>
@@ -30,6 +34,10 @@
             <p class="card-text">Marca: {{monitor.brand}}</p>
             <p class="card-text">Modelo: {{monitor.model}}</p>
             <p class="card-text">Precio: {{monitor.price}}</p>
+            {% if request.user.is_superuser %}
+            <a href="/products/update-monitor/{{monitor.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-monitor/{{monitor.id}}/" class="btn btn-danger">Borrar</a>
+            {% endif %}
             <a href="#" class="btn btn-primary">Ver Detalle</a>
         </div>
     </div>
@@ -45,6 +53,10 @@
             <p class="card-text">Marca :{{peripheral.brand}}</p>
             <p class="card-text">Tipo :{{peripheral.type}}</p>
             <p class="card-text">Precio:{{peripheral.price}}</p>
+            {% if request.user.is_superuser %}
+            <a href="/products/update-peripheral/{{periferico.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-peripheral/{{periferico.id}}/" class="btn btn-danger">Borrar</a>
+            {% endif %}
             <a href="#" class="btn btn-primary">Ver Detalle</a>
         </div>
     </div>

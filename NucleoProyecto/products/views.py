@@ -1,4 +1,4 @@
-from tkinter.ttk import Notebook
+from django.views.generic import DetailView
 from django.shortcuts import render, redirect
 from products.models import Notebooks, Monitores ,Perifericos
 from products.forms import Formulario_notebooks, Formulario_monitores, Formulario_perifericos
@@ -86,6 +86,10 @@ def update_notebook(request, pk):
         context = {'form':form}
         return render(request, 'notebooks/update_notebook.html', context=context)
 
+
+class Detail_notebook(DetailView):
+    model= Notebooks
+    template_name= 'notebooks/detail_notebook.html'
 
 # Monitores
 @login_required
