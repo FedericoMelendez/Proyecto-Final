@@ -1,3 +1,4 @@
+from tkinter.ttk import Notebook
 from django.shortcuts import render, redirect
 from products.models import Notebooks, Monitores ,Perifericos
 from products.forms import Formulario_notebooks, Formulario_monitores, Formulario_perifericos
@@ -37,6 +38,53 @@ def list_notebooks(request):#Lista de Notebooks
         'notebooks':notebooks
         }
     return render(request, 'notebooks/list_notebooks.html', context=context)
+
+
+def delete_notebook (request, pk):
+    if request.method == 'GET':
+        notebook = Notebooks.objects.get(pk=pk)
+        context = {'notebook':notebook}
+        return render(request, 'notebooks/delete_notebook.html', context=context)
+    elif request.method == 'POST':
+        notebook = Notebooks.objects.get(pk=pk)
+        notebook.delete()
+        return redirect(list_notebooks)
+
+
+def update_notebook(request, pk):
+    if request.method == 'POST':
+        form = Formulario_notebooks(request.POST)
+        if form.is_valid():
+            notebook = Notebooks.objects.get(id=pk)
+            notebook.name = form.cleaned_data['name']
+            notebook.brand = form.cleaned_data['brand']
+            notebook.model = form.cleaned_data['model']
+            notebook.processor = form.cleaned_data['processor']
+            notebook.ram = form.cleaned_data['ram']
+            notebook.display = form.cleaned_data['display']
+            notebook.capacity = form.cleaned_data['capacity']
+            notebook.price = form.cleaned_data['price']
+            notebook.stock = form.cleaned_data['stock']
+            notebook.save()
+
+            return redirect(list_notebooks)
+
+
+    elif request.method == 'GET':
+        notebook = Notebooks.objects.get(id=pk)
+
+        form = Formulario_notebooks(initial={
+                                        'name':notebook.name,
+                                        'brand':notebook.brand,
+                                        'model':notebook.model,
+                                        'processor':notebook.processor,
+                                        'ram':notebook.ram,
+                                        'display':notebook.display,
+                                        'capacity':notebook.capacity, 
+                                        'price':notebook.price,
+                                        'stock':notebook.stock})
+        context = {'form':form}
+        return render(request, 'notebooks/update_notebook.html', context=context)
 
 
 # Monitores
@@ -99,18 +147,8 @@ def list_peripherals(request):# Lista de Perifericos
     return render(request, 'peripherals/list_peripherals.html', context=context)
 
 
-def list_all(request):
-    all_peripherals = Perifericos.objects.all()
-    all_monitors = Monitores.objects.all()
-    all_notebooks = Notebooks.objects.all()
-    context = {
-        'perifericos':all_peripherals,
-        'monitores':all_monitors,
-        'notebooks':all_notebooks
-        }
-    return render(request, 'all_products.html', context=context)
-
 def search_products(request): #Busqueda de todos los productos
+
     search = request.GET['search']
     notebooks =Notebooks.objects.filter(name__icontains=search)
     monitors = Monitores.objects.filter(name__icontains=search)
@@ -121,3 +159,7 @@ def search_products(request): #Busqueda de todos los productos
         'peripherals':peripherals
     }
     return render(request, 'search_products.html', context=context)
+
+
+
+
