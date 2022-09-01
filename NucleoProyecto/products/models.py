@@ -29,6 +29,7 @@ class Monitores (models.Model):
     price = models.FloatField()
     is_active = models.BooleanField(default=True)
     stock = models.IntegerField()
+    image = models.ImageField(upload_to='monitores/', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -44,6 +45,7 @@ class Perifericos (models.Model):
     price = models.FloatField()
     is_active = models.BooleanField(default=True)
     stock = models.IntegerField()
+    image = models.ImageField(upload_to='perifericos/', null=True, blank=True)
 
     def __str__(self):
         return self.name
