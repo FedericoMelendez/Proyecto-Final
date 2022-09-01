@@ -162,6 +162,12 @@ def update_monitor(request, pk):
         context = {'form':form}
         return render(request, 'monitors/update_monitor.html', context=context)
 
+
+class Detail_monitor(DetailView):
+    model= Monitores
+    template_name= 'monitors/detail_monitor.html'
+
+
 # Perifericos 
 @login_required
 def create_peripherals(request):# Crear Perifericos
