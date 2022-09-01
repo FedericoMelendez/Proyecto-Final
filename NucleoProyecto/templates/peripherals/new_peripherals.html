@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block cambio_contenido %}
-<form action="" method="POST">
-    {% csrf_token %}
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
     
-    <table>
+<table>
     
-        {{form.as_table}}
+    {{form.as_table}}
     
-    </table>
+</table>
     
-    <p><input type="submit" value="Enviar"></p>
+<p><input type="submit" value="Enviar"></p>
     
-    </form>
+</form>
 
 {% endblock %}
