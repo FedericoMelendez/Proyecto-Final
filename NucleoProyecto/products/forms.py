@@ -11,6 +11,8 @@ class Formulario_notebooks(forms.Form):
     capacity = forms.CharField(max_length=50) # Capacidad de almacenamiento
     price = forms.FloatField() #Precio
     stock = forms.IntegerField()
+    image = forms.ImageField(required=False)
+    
 
 class Formulario_monitores(forms.Form):
     name = forms.CharField(max_length=200)

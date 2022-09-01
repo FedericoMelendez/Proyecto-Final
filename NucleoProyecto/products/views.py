@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 def create_notebook(request): #Crear Notebook
 
     if request.method == 'POST':
-        form = Formulario_notebooks(request.POST)
+        form = Formulario_notebooks(request.POST, request.FILES)
 
         if form.is_valid():
             Notebooks.objects.create(
@@ -21,7 +21,8 @@ def create_notebook(request): #Crear Notebook
                 display = form.cleaned_data['display'],
                 capacity = form.cleaned_data['capacity'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock']
+                stock = form.cleaned_data['stock'],
+                image = form.cleaned_data['image']
             )
 
             return redirect(list_notebooks)

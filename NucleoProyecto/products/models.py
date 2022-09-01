@@ -11,6 +11,8 @@ class Notebooks(models.Model):
     price = models.FloatField() #Precio
     is_active = models.BooleanField(default=True)
     stock = models.IntegerField()
+    image = models.ImageField(upload_to='notebooks/', null=True, blank=True)
+
 
     def __str__(self):
         return self.name
