@@ -66,7 +66,8 @@ def update_notebook(request, pk):
             notebook.capacity = form.cleaned_data['capacity']
             notebook.price = form.cleaned_data['price']
             notebook.stock = form.cleaned_data['stock']
-            notebook.image=form.cleaned_data['image']
+            if form.cleaned_data['image']:
+                notebook.image=form.cleaned_data['image']
             notebook.save()
             return redirect(list_notebooks)
 
@@ -147,7 +148,8 @@ def update_monitor(request, pk):
             monitor.display = form.cleaned_data['display']
             monitor.price = form.cleaned_data['price']
             monitor.stock = form.cleaned_data['stock']
-            monitor.image=form.cleaned_data['image']
+            if form.cleaned_data['image']:
+                monitor.image=form.cleaned_data['image']
             monitor.save()
 
             return redirect(list_monitors)
@@ -225,7 +227,8 @@ def update_peripheral(request, pk):
             peripherals.type = form.cleaned_data['type']
             peripherals.price = form.cleaned_data['price']
             peripherals.stock = form.cleaned_data['stock']
-            peripherals.image = form.cleaned_data['image']
+            if form.cleaned_data['image']:
+                peripherals.image = form.cleaned_data['image']
             peripherals.save()
 
             return redirect(list_peripherals)

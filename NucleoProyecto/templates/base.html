@@ -40,6 +40,18 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/users/logout/">Logout</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                  Crear Articulos
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/products/new-notebook/">Crear Notebook</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/products/new-monitor/">Crear Monitor</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/products/new-peripheral/">Crear Periferico</a>
+                </div>
+              </li>
             {% else %}
             <li class="nav-item active">
                 <a class="nav-link" href="/users/login/">Login</a>
