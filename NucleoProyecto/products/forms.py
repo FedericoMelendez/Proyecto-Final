@@ -21,6 +21,7 @@ class Formulario_monitores(forms.Form):
     display = forms.CharField(max_length=50)
     price = forms.FloatField()
     stock = forms.IntegerField()
+    image = forms.ImageField(required=False)
 
 class Formulario_perifericos (forms.Form):
     name = forms.CharField(max_length=200)
@@ -28,3 +29,4 @@ class Formulario_perifericos (forms.Form):
     type = forms.CharField(max_length=50)
     price = forms.FloatField()
     stock = forms.IntegerField()
+    image = forms.ImageField(required=False)

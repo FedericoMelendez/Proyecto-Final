@@ -1,5 +1,5 @@
 from django.urls import path
-from products.views import create_notebook,list_notebooks,create_monitor,list_monitors,create_peripherals,list_peripherals,search_products,\
+from products.views import create_notebook,list_notebooks,create_monitor,list_monitors,create_peripheral,list_peripherals,search_products,\
     delete_notebook,update_notebook,delete_monitor,update_monitor , delete_peripheral , update_peripheral , Detail_notebook , Detail_peripheral , Detail_monitor
 
 urlpatterns = [
@@ -17,7 +17,7 @@ urlpatterns = [
     path ('detail-monitor/<int:pk>/', Detail_monitor.as_view(), name='Detail_monitor'),
     
 
-    path ('new-peripherals/',create_peripherals,name='new-peripherals'),
+    path ('new-peripheral/',create_peripheral,name='new-peripheral'),
     path ('list-peripherals/',list_peripherals, name='list_peripherals'),
     path ('delete-peripheral/<int:pk>/', delete_peripheral, name='delete-peripheral'),
     path ('update-peripheral/<int:pk>/', update_peripheral, name='update_peripheral'),

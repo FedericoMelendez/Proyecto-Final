@@ -9,7 +9,11 @@
     {% for monitor in monitores %}
 
     <div class="card" style="width: 18rem;">
+        {% if monitor.image %}
+        <img src="{{monitor.image.url}}" class="card-img-top" alt="...">
+        {% else %}
         <img src="https://snpi.dell.com/snp/images/products/large/es-ar~210-AUND/210-AUND_v1.jpg" class="card-img-top" alt="...">
+        {% endif %}
         <div class="card-body">
         <h5 class="card-title">{{monitor.name}}</h5>
         <p class="card-text">Marca: {{monitor.brand}}</p>

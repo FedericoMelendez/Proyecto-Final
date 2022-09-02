@@ -6,7 +6,7 @@
 
 {% block cambio_contenido %}
 <div class="card" style="width: 18rem;">
-    <img src="https://www.profesionalreview.com/wp-content/uploads/2021/04/teclados-tkl-5-1280x720.jpg" class="card-img-top" alt="...">
+    <img src="{{object.image.url}}" class="card-img-top" alt="...">
     <div class="card-body">
     <h5 class="card-title">{{object.name}}</h5>
     <p class="card-text">Marca: {{object.brand}}</p>
@@ -14,8 +14,8 @@
     <p class="card-text">Stock: {{object.stock}}</p>
     <p class="card-text">Precio: {{object.price}}</p>
     {% if request.user.is_superuser %}
-            <a href="/products/update-peripheral/{{periferico.id}}/" class="btn btn-primary">Editar</a>
-            <a href="/products/delete-peripheral/{{periferico.id}}/" class="btn btn-danger">Borrar</a>
+            <a href="/products/update-peripheral/{{object.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-peripheral/{{object.id}}/" class="btn btn-danger">Borrar</a>
             {% endif %}
     </div>
 </div>

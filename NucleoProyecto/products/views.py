@@ -97,7 +97,7 @@ class Detail_notebook(DetailView):
 @login_required
 def create_monitor(request):#Crear Monitor
     if request.method == 'POST':
-        form = Formulario_monitores(request.POST)
+        form = Formulario_monitores(request.POST, request.FILES)
 
         if form.is_valid():
             Monitores.objects.create(
@@ -106,7 +106,8 @@ def create_monitor(request):#Crear Monitor
                 model = form.cleaned_data['model'], 
                 display = form.cleaned_data['display'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock']
+                stock = form.cleaned_data['stock'],
+                image=form.cleaned_data['image']
             )
 
             return redirect(list_monitors)
@@ -137,7 +138,7 @@ def delete_monitor (request, pk):
 @login_required
 def update_monitor(request, pk):
     if request.method == 'POST':
-        form = Formulario_monitores(request.POST)
+        form = Formulario_monitores(request.POST, request.FILES)
         if form.is_valid():
             monitor = Monitores.objects.get(id=pk)
             monitor.name = form.cleaned_data['name']
@@ -146,6 +147,7 @@ def update_monitor(request, pk):
             monitor.display = form.cleaned_data['display']
             monitor.price = form.cleaned_data['price']
             monitor.stock = form.cleaned_data['stock']
+            monitor.image=form.cleaned_data['image']
             monitor.save()
 
             return redirect(list_monitors)
@@ -160,7 +162,8 @@ def update_monitor(request, pk):
                                         'model':monitor.model,
                                         'display':monitor.display,
                                         'price':monitor.price,
-                                        'stock':monitor.stock})
+                                        'stock':monitor.stock,
+                                        'image':monitor.image})
         context = {'form':form}
         return render(request, 'monitors/update_monitor.html', context=context)
 
@@ -172,9 +175,9 @@ class Detail_monitor(DetailView):
 
 # Perifericos 
 @login_required
-def create_peripherals(request):# Crear Perifericos
+def create_peripheral(request):# Crear Perifericos
     if request.method == 'POST':
-        form = Formulario_perifericos(request.POST)
+        form = Formulario_perifericos(request.POST,request.FILES)
 
         if form.is_valid():
             Perifericos.objects.create(
@@ -182,7 +185,8 @@ def create_peripherals(request):# Crear Perifericos
                 brand = form.cleaned_data['brand'], 
                 type = form.cleaned_data['type'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock']
+                stock = form.cleaned_data['stock'],
+                image = form.cleaned_data['image']
             )
 
             return redirect(list_peripherals)
@@ -190,7 +194,7 @@ def create_peripherals(request):# Crear Perifericos
     elif request.method == 'GET':
             form = Formulario_perifericos()
             context = {'form':form}
-            return render(request, 'peripherals/new_peripherals.html', context=context)
+            return render(request, 'peripherals/new_peripheral.html', context=context)
 
 def list_peripherals(request):# Lista de Perifericos
     peripherals = Perifericos.objects.all() 
@@ -204,7 +208,7 @@ def delete_peripheral (request, pk):
     if request.method == 'GET':
         peripheral = Perifericos.objects.get(pk=pk)
         context = {'peripheral':peripheral}
-        return render(request, 'peripherals/delete_peripherals.html', context=context)
+        return render(request, 'peripherals/delete_peripheral.html', context=context)
     elif request.method == 'POST':
         peripheral = Perifericos.objects.get(pk=pk)
         peripheral.delete()
@@ -213,7 +217,7 @@ def delete_peripheral (request, pk):
 @login_required
 def update_peripheral(request, pk):
     if request.method == 'POST':
-        form = Formulario_perifericos(request.POST)
+        form = Formulario_perifericos(request.POST,request.FILES)
         if form.is_valid():
             peripherals = Perifericos.objects.get(id=pk)
             peripherals.name = form.cleaned_data['name']
@@ -221,6 +225,7 @@ def update_peripheral(request, pk):
             peripherals.type = form.cleaned_data['type']
             peripherals.price = form.cleaned_data['price']
             peripherals.stock = form.cleaned_data['stock']
+            peripherals.image = form.cleaned_data['image']
             peripherals.save()
 
             return redirect(list_peripherals)
@@ -234,9 +239,10 @@ def update_peripheral(request, pk):
                                         'brand':peripherals.brand,
                                         'type':peripherals.type,
                                         'price':peripherals.price,
-                                        'stock':peripherals.stock})
+                                        'stock':peripherals.stock,
+                                        'image':peripherals.image})
         context = {'form':form}
-        return render(request, 'peripherals/update_peripherals.html', context=context)
+        return render(request, 'peripherals/update_peripheral.html', context=context)
 
 
 

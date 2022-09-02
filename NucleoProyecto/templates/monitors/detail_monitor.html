@@ -6,7 +6,7 @@
 
 {% block cambio_contenido %}
 <div class="card" style="width: 18rem;">
-    <img src="https://snpi.dell.com/snp/images/products/large/es-ar~210-AUND/210-AUND_v1.jpg" class="card-img-top" alt="...">
+    <img src="{{object.image.url}}" class="card-img-top" alt="...">
     <div class="card-body">
     <h5 class="card-title">{{object.name}}</h5>
     <p class="card-text">Marca: {{object.brand}}</p>
@@ -16,8 +16,8 @@
     <p class="card-text">Precio: {{object.price}}</p>
 
     {% if request.user.is_superuser %}
-            <a href="/products/update-monitor/{{monitor.id}}/" class="btn btn-primary">Editar</a>
-            <a href="/products/delete-monitor/{{monitor.id}}/" class="btn btn-danger">Borrar</a>
+            <a href="/products/update-monitor/{{object.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/products/delete-monitor/{{object.id}}/" class="btn btn-danger">Borrar</a>
     {% endif %}
 
     </div>
