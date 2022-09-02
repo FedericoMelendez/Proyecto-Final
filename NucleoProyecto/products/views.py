@@ -54,7 +54,7 @@ def delete_notebook (request, pk):
 @login_required
 def update_notebook(request, pk):
     if request.method == 'POST':
-        form = Formulario_notebooks(request.POST)
+        form = Formulario_notebooks(request.POST, request.FILES)
         if form.is_valid():
             notebook = Notebooks.objects.get(id=pk)
             notebook.name = form.cleaned_data['name']
@@ -66,9 +66,7 @@ def update_notebook(request, pk):
             notebook.capacity = form.cleaned_data['capacity']
             notebook.price = form.cleaned_data['price']
             notebook.stock = form.cleaned_data['stock']
-            if form.cleaned_data['image']:
-                notebook.image=form.cleaned_data['image']
-            
+            notebook.image=form.cleaned_data['image']
             notebook.save()
             return redirect(list_notebooks)
 
