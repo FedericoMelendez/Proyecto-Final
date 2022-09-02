@@ -21,7 +21,8 @@ def create_notebook(request): #Crear Notebook
                 display = form.cleaned_data['display'],
                 capacity = form.cleaned_data['capacity'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock']
+                stock = form.cleaned_data['stock'],
+                image=form.cleaned_data['image']
             )
 
             return redirect(list_notebooks)
@@ -65,8 +66,10 @@ def update_notebook(request, pk):
             notebook.capacity = form.cleaned_data['capacity']
             notebook.price = form.cleaned_data['price']
             notebook.stock = form.cleaned_data['stock']
+            if form.cleaned_data['image']:
+                notebook.image=form.cleaned_data['image']
+            
             notebook.save()
-
             return redirect(list_notebooks)
 
 
@@ -82,7 +85,8 @@ def update_notebook(request, pk):
                                         'display':notebook.display,
                                         'capacity':notebook.capacity, 
                                         'price':notebook.price,
-                                        'stock':notebook.stock})
+                                        'stock':notebook.stock,
+                                        'image':notebook.image})
         context = {'form':form}
         return render(request, 'notebooks/update_notebook.html', context=context)
 

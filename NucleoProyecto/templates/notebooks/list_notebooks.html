@@ -9,7 +9,11 @@
 {% for notebook in notebooks %}
 
 <div class="card" style="width: 18rem;">
+    {% if notebook.image %}
+    <img src="{{notebook.image.url}}" class="card-img-top" alt="...">
+    {% else %}
     <img src="https://www.fullh4rd.com.ar/img/productos/Pics_Prod/notebook-dell-156-latitude-3520-i51135g7-8gb-256gb-w10h-0.jpg" class="card-img-top" alt="...">
+    {% endif %}
     <div class="card-body">
     <h5 class="card-title">{{notebook.name}}</h5>
     <p class="card-text">Marca: {{notebook.brand}}</p>
