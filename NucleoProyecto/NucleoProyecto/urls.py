@@ -6,7 +6,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from NucleoProyecto.views import saludo,index
+from NucleoProyecto.views import saludo,index, about
 
 
 urlpatterns = [
@@ -16,4 +16,6 @@ urlpatterns = [
     path ('', index, name='index'),
     path ('index/', index, name='index'),
     path('users/', include ('users.urls')),
+    path ('', about, name='about'),
+    path ('about/', about, name='about'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
