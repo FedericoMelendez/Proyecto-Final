@@ -6,26 +6,23 @@
 
 {% block cambio_contenido %}
 
-    {% for notebook in Notebooks %}
-    <div class="card" style="width: 18rem;">
-        {% if notebook.image %}
-        <img src="{{notebook.image.url}}" class="card-img-top">
-        {% else %}
-        <img src="https://i0.wp.com/edtechreviews.net/wp-content/uploads/2021/12/coderhouse_logo.png?resize=750%2C750&ssl=1" class="card-img-top">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{notebook.name}}</h5>
-            <p class="card-text">Marca: {{notebook.brand}}</p>
-            <p class="card-text">Modelo: {{notebook.model}}</p>
-            <p class="card-text">Procesador: {{notebook.processor}}</p>
-            <p class="card-text">Precio: {{notebook.price}}</p>
-        {% if request.user.is_superuser %}
+{% for notebook in notebooks %}
+
+<div class="card" style="width: 18rem;">
+    <img src="https://www.fullh4rd.com.ar/img/productos/Pics_Prod/notebook-dell-156-latitude-3520-i51135g7-8gb-256gb-w10h-0.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">{{notebook.name}}</h5>
+    <p class="card-text">Marca: {{notebook.brand}}</p>
+    <p class="card-text">Modelo: {{notebook.model}}</p>
+    <p class="card-text">Procesador: {{notebook.processor}}</p>
+    <p class="card-text">Precio: {{notebook.price}}</p>
+    {% if request.user.is_superuser %}
             <a href="/products/update-notebook/{{notebook.id}}/" class="btn btn-primary">Editar</a>
             <a href="/products/delete-notebook/{{notebook.id}}/" class="btn btn-danger">Borrar</a>
-        {% endif %}
-            <a href="/products/detail-notebook/{{notebook.id}}/" class="btn btn-primary">Ver mas detalles</a>
-        </div>
+            {% endif %}
+        <a href="/products/detail-notebook/{{notebook.id}}/" class="btn btn-primary">Ver mas detalles</a>
     </div>
-    {% endfor %}
+</div>
+{% endfor %}
 
 {% endblock %}  

@@ -21,8 +21,7 @@ def create_notebook(request): #Crear Notebook
                 display = form.cleaned_data['display'],
                 capacity = form.cleaned_data['capacity'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock'],
-                image = form.cleaned_data['image']
+                stock = form.cleaned_data['stock']
             )
 
             return redirect(list_notebooks)
@@ -105,8 +104,7 @@ def create_monitor(request):#Crear Monitor
                 model = form.cleaned_data['model'], 
                 display = form.cleaned_data['display'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock'],
-                image = form.cleaned_data['image']
+                stock = form.cleaned_data['stock']
             )
 
             return redirect(list_monitors)
@@ -182,8 +180,7 @@ def create_peripherals(request):# Crear Perifericos
                 brand = form.cleaned_data['brand'], 
                 type = form.cleaned_data['type'],
                 price = form.cleaned_data['price'],
-                stock = form.cleaned_data['stock'],
-                image = form.cleaned_data['image']
+                stock = form.cleaned_data['stock']
             )
 
             return redirect(list_peripherals)
