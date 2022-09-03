@@ -269,5 +269,14 @@ def search_products(request): #Busqueda de todos los productos
     return render(request, 'search_products.html', context=context)
 
 
-
+def all_products(request):# Lista de todos los productos
+    notebooks =Notebooks.objects.all()
+    monitors = Monitores.objects.all()
+    peripherals = Perifericos.objects.all()
+    context = {
+        'notebooks':notebooks,
+        'monitors':monitors,
+        'peripherals':peripherals
+    }
+    return render(request, 'all_products.html', context=context)
 
