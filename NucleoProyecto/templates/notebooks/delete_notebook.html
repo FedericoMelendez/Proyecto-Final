@@ -1,19 +1,31 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    delete_notebook
+    Borrar Notebook
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{notebook.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{notebook.name}}</h5>
+            <p class="card-text">Marca: {{notebook.brand}}</p>
+            <p class="card-text">Modelo: {{notebook.model}}</p>
+            <p class="card-text">Procesador: {{notebook.processor}}</p>
+            <p class="card-text">RAM: {{notebook.ram}}</p>
+            <p class="card-text">Display: {{notebook.display}}</p>
+            <p class="card-text">Capacidad: {{notebook.capacity}}</p>
+            <p class="card-text">Precio: {{notebook.price}}</p>
+            <p class="card-text">Stock: {{notebook.stock}}</p>
+            </div>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+                <p><input type="submit" value="Borrar"></p>
+        </form>
+    {% endblock %}
 
-{% block cambio_contenido %}
-
-<p>Nombre de la notebook : {{notebook.name}}</p>
-<p>Marca de la notebook : {{notebook.brand}}</p>
-<p>Precio de la notebook : {{notebook.price}}</p>
-
-<form action="" method="POST">
-    {% csrf_token %}
-        <p><input type="submit" value="Borrar"></p>
-</form>
-
-
-{% endblock %}
+</body>
+</html>

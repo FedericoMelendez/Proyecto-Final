@@ -1,21 +1,25 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    update_notebook
+    Update-notebook
 {% endblock %}
-
-{% block cambio_contenido %}
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+<body>
+    {% block cambio_contenido %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <table>
+        
+            {{form.as_table}}
+        
+        </table>
+        
+        <p><input type="submit" value="Enviar"></p>
+        
+        </form>
     
-    <table>
-    
-        {{form.as_table}}
-    
-    </table>
-    
-    <p><input type="submit" value="Enviar"></p>
-    
-    </form>
-
-{% endblock %}
+    {% endblock %}  
+</body>
+</html>

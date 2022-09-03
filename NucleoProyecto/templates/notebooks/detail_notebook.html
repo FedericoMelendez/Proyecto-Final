@@ -1,26 +1,30 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Detalle de Notebooks
+    Detalle notebook
 {% endblock %}
-
-{% block cambio_contenido %}
-<div class="card" style="width: 18rem;">
-    <img src="{{object.image.url}}" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">{{object.name}}</h5>
-    <p class="card-text">Marca: {{object.brand}}</p>
-    <p class="card-text">Modelo: {{object.model}}</p>
-    <p class="card-text">Procesador: {{object.processor}}</p>
-    <p class="card-text">RAM: {{object.ram}}</p>
-    <p class="card-text">Display: {{object.display}}</p>
-    <p class="card-text">Capacidad: {{object.capacity}}</p>
-    <p class="card-text">Precio: {{object.price}}</p>
-    <p class="card-text">Stock: {{object.stock}}</p>
-    {% if request.user.is_superuser %}
-            <a href="/products/update-notebook/{{object.id}}/" class="btn btn-primary">Editar</a>
-            <a href="/products/delete-notebook/{{object.id}}/" class="btn btn-danger">Borrar</a>
-            {% endif %}
-    </div>
-</div>
-{% endblock %}
+<body>
+    {% block cambio_contenido %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{object.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{object.name}}</h5>
+            <p class="card-text">Marca: {{object.brand}}</p>
+            <p class="card-text">Modelo: {{object.model}}</p>
+            <p class="card-text">Procesador: {{object.processor}}</p>
+            <p class="card-text">RAM: {{object.ram}}</p>
+            <p class="card-text">Display: {{object.display}}</p>
+            <p class="card-text">Capacidad: {{object.capacity}}</p>
+            <p class="card-text">Precio: {{object.price}}</p>
+            <p class="card-text">Stock: {{object.stock}}</p>
+            {% if request.user.is_superuser %}
+                    <a href="/products/update-notebook/{{object.id}}/" class="btn btn-primary">Editar</a>
+                    <a href="/products/delete-notebook/{{object.id}}/" class="btn btn-danger">Borrar</a>
+                    {% endif %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

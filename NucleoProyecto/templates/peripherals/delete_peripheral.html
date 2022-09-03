@@ -1,19 +1,27 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    delete_peripherals
+    Borrar Periferico
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{peripheral.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{peripheral.name}}</h5>
+            <p class="card-text">Marca: {{peripheral.brand}}</p>
+            <p class="card-text">Tipo: {{peripheral.type}}</p>
+            <p class="card-text">Stock: {{peripheral.stock}}</p>
+            <p class="card-text">Precio: {{peripheral.price}}</p>
+            </div>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+                <p><input type="submit" value="Borrar"></p>
+        </form>
+    {% endblock %}
 
-{% block cambio_contenido %}
-
-<p>Nombre del periferico: {{peripheral.name}}</p>
-<p>Marca del periferico : {{peripheral.brand}}</p>
-<p>Precio del periferico : {{peripheral.price}}</p>
-
-<form action="" method="POST">
-    {% csrf_token %}
-        <p><input type="submit" value="Borrar"></p>
-</form>
-
-
-{% endblock %}
+</body>
+</html>

@@ -1,31 +1,35 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Monitores
+    Lista Monitores
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
 
-{% block cambio_contenido %}
+        {% for monitor in monitores %}
 
-    {% for monitor in monitores %}
-
-    <div class="card" style="width: 18rem;">
-        {% if monitor.image %}
-        <img src="{{monitor.image.url}}" class="card-img-top" alt="...">
-        {% else %}
-        <img src="https://snpi.dell.com/snp/images/products/large/es-ar~210-AUND/210-AUND_v1.jpg" class="card-img-top" alt="...">
-        {% endif %}
-        <div class="card-body">
-        <h5 class="card-title">{{monitor.name}}</h5>
-        <p class="card-text">Marca: {{monitor.brand}}</p>
-        <p class="card-text">Modelo: {{monitor.model}}</p>
-        <p class="card-text">Precio: {{monitor.price}}</p>
-            {% if request.user.is_superuser %}
-             <a href="/products/update-monitor/{{monitor.id}}/" class="btn btn-primary">Editar</a>
-            <a href="/products/delete-monitor/{{monitor.id}}/" class="btn btn-danger">Borrar</a>
+        <div class="card" style="width: 18rem;">
+            {% if monitor.image %}
+            <img src="{{monitor.image.url}}" class="card-img-top" alt="...">
+            {% else %}
+            <img src="https://snpi.dell.com/snp/images/products/large/es-ar~210-AUND/210-AUND_v1.jpg" class="card-img-top" alt="...">
             {% endif %}
-        <a href="/products/detail-monitor/{{monitor.id}}/" class="btn btn-primary">Ver mas detalles</a>
+            <div class="card-body">
+            <h5 class="card-title">{{monitor.name}}</h5>
+            <p class="card-text">Marca: {{monitor.brand}}</p>
+            <p class="card-text">Modelo: {{monitor.model}}</p>
+            <p class="card-text">Precio: {{monitor.price}}</p>
+                {% if request.user.is_superuser %}
+                <a href="/products/update-monitor/{{monitor.id}}/" class="btn btn-primary">Editar</a>
+                <a href="/products/delete-monitor/{{monitor.id}}/" class="btn btn-danger">Borrar</a>
+                {% endif %}
+            <a href="/products/detail-monitor/{{monitor.id}}/" class="btn btn-primary">Ver mas detalles</a>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
 
-{% endblock %}  
+    {% endblock %}  
+</body>
+</html>

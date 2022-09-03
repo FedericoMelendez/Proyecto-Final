@@ -1,31 +1,36 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Perifericos
+    Lista Perifericos
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
 
-{% block cambio_contenido %}
+        {% for periferico in perifericos %}
 
-    {% for periferico in perifericos %}
-
-    <div class="card" style="width: 18rem;">
-        {% if periferico.image %}
-        <img src="{{periferico.image.url}}" class="card-img-top" alt="...">
-        {% else %}
-        <img src="https://www.profesionalreview.com/wp-content/uploads/2021/04/teclados-tkl-5-1280x720.jpg" class="card-img-top" alt="...">
-        {% endif %}
-        <div class="card-body">
-        <h5 class="card-title">{{periferico.name}}</h5>
-        <p class="card-text">Marca: {{periferico.brand}}</p>
-        <p class="card-text">Tipo: {{periferico.type}}</p>
-        <p class="card-text">Precio: {{periferico.price}}</p>
-        {% if request.user.is_superuser %}
-            <a href="/products/update-peripheral/{{periferico.id}}/" class="btn btn-primary">Editar</a>
-            <a href="/products/delete-peripheral/{{periferico.id}}/" class="btn btn-danger">Borrar</a>
+        <div class="card" style="width: 18rem;">
+            {% if periferico.image %}
+            <img src="{{periferico.image.url}}" class="card-img-top" alt="...">
+            {% else %}
+            <img src="https://www.profesionalreview.com/wp-content/uploads/2021/04/teclados-tkl-5-1280x720.jpg" class="card-img-top" alt="...">
             {% endif %}
-        <a href="/products/detail-peripheral/{{periferico.id}}/" class="btn btn-primary">Ver mas detalles</a>
+            <div class="card-body">
+            <h5 class="card-title">{{periferico.name}}</h5>
+            <p class="card-text">Marca: {{periferico.brand}}</p>
+            <p class="card-text">Tipo: {{periferico.type}}</p>
+            <p class="card-text">Precio: {{periferico.price}}</p>
+            {% if request.user.is_superuser %}
+                <a href="/products/update-peripheral/{{periferico.id}}/" class="btn btn-primary">Editar</a>
+                <a href="/products/delete-peripheral/{{periferico.id}}/" class="btn btn-danger">Borrar</a>
+                {% endif %}
+            <a href="/products/detail-peripheral/{{periferico.id}}/" class="btn btn-primary">Ver mas detalles</a>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
 
-{% endblock %}  
+    {% endblock %}  
+</body>
+</html>
+

@@ -1,24 +1,29 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Nuevo_Monitor
+    Nuevo-Monitor
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
 
-{% block cambio_contenido %}
+        <h2>Crear un nuevo articulo de tipo Monitor</h2>
+        
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+        <table>
+            
+                {{form.as_table}}
+            
+        </table>
+            
+        <p><input type="submit" value="Enviar"></p>
+            
+        </form>
+        
+    {% endblock %}  
+</body>
+</html>
 
-<h2>Crear un nuevo articulo de tipo Monitor</h2>
-
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    
-<table>
-    
-        {{form.as_table}}
-    
-</table>
-    
-<p><input type="submit" value="Enviar"></p>
-    
-</form>
-
-{% endblock %}

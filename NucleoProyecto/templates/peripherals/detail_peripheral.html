@@ -1,22 +1,26 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Detalle de Perifericos
+    Detalle Periferico
 {% endblock %}
-
-{% block cambio_contenido %}
-<div class="card" style="width: 18rem;">
-    <img src="{{object.image.url}}" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">{{object.name}}</h5>
-    <p class="card-text">Marca: {{object.brand}}</p>
-    <p class="card-text">Tipo: {{object.type}}</p>
-    <p class="card-text">Stock: {{object.stock}}</p>
-    <p class="card-text">Precio: {{object.price}}</p>
-    {% if request.user.is_superuser %}
-            <a href="/products/update-peripheral/{{object.id}}/" class="btn btn-primary">Editar</a>
-            <a href="/products/delete-peripheral/{{object.id}}/" class="btn btn-danger">Borrar</a>
-            {% endif %}
-    </div>
-</div>
-{% endblock %}
+<body>
+    {% block cambio_contenido %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{object.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{object.name}}</h5>
+            <p class="card-text">Marca: {{object.brand}}</p>
+            <p class="card-text">Tipo: {{object.type}}</p>
+            <p class="card-text">Stock: {{object.stock}}</p>
+            <p class="card-text">Precio: {{object.price}}</p>
+            {% if request.user.is_superuser %}
+                    <a href="/products/update-peripheral/{{object.id}}/" class="btn btn-primary">Editar</a>
+                    <a href="/products/delete-peripheral/{{object.id}}/" class="btn btn-danger">Borrar</a>
+                    {% endif %}
+            </div>
+        </div>
+    {% endblock %}  
+</body>
+</html>

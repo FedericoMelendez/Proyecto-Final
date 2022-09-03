@@ -1,19 +1,29 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    delete_monitor
+    Borrar Monitores
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{monitor.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{monitor.name}}</h5>
+            <p class="card-text">Marca: {{monitor.brand}}</p>
+            <p class="card-text">Modelo: {{monitor.model}}</p>
+            <p class="card-text">Pantalla: {{monitor.display}}</p>
+            <p class="card-text">Stock: {{monitor.stock}}</p>
+            <p class="card-text">Precio: {{monitor.price}}</p>
+            </div>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+                <p><input type="submit" value="Borrar"></p>
+        </form>
+    {% endblock %}
 
-{% block cambio_contenido %}
+</body>
+</html>
 
-<p>Nombre del monitor : {{monitor.name}}</p>
-<p>Marca del monitor : {{monitor.brand}}</p>
-<p>Precio del monitor : {{monitor.price}}</p>
-
-<form action="" method="POST">
-    {% csrf_token %}
-        <p><input type="submit" value="Borrar"></p>
-</form>
-
-
-{% endblock %}

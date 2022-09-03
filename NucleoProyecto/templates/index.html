@@ -75,13 +75,32 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="/products/list-peripherals/">Todos los perifericos</a>
                               </li>
-                              
+                              {% if request.user.is_authenticated %}
                               <li class="nav-item d_none login_btn">
-                                 <a class="nav-link" href="#">Login</a>
+                                 <a class="nav-link" href="/users/logout/">Logout</a>
+                              </li>
+                              {% if request.user.is_superuser %}
+                              <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                 Crear Articulos
+                                 </a>
+                                 <div class="dropdown-menu">
+                                 <a class="dropdown-item" href="/products/new-notebook/">Crear Notebook</a>
+                                 <div class="dropdown-divider"></div>
+                                 <a class="dropdown-item" href="/products/new-monitor/">Crear Monitor</a>
+                                 <div class="dropdown-divider"></div>
+                                 <a class="dropdown-item" href="/products/new-peripheral/">Crear Periferico</a>
+                                 </div>
+                              </li>
+                                 {% endif %}
+                              {% else %}
+                              <li class="nav-item d_none login_btn">
+                                 <a class="nav-link" href="/users/login/">Login</a>
                               </li>
                               <li class="nav-item d_none">
-                                 <a class="nav-link" href="#">Register</a>
+                                 <a class="nav-link" href="/users/register/">Register</a>
                               </li>
+                              {% endif %}
                               <form class="form-inline my-2 my-lg-0" action ="/products/search-products/" method="GET">
                                  <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name ='search'>
                                  <button class="btn btn-secondary btn-sm" type="submit">Search</button>
@@ -118,7 +137,7 @@
                                  <div class="text-bg">
                                     <h1> <span class="blu">Bienvenido <br></span>Al sitio de las mejores Notebooks</h1>
                                     <figure><img src="/static/images/notebookbanner_img.png" alt="#"/></figure>
-                                    <a class="read_more" href="#">Ver Mas</a>
+                                    <a class="read_more" href="/products/list-notebooks/">Ver Mas</a>
                                  </div>
                               </div>
                            </div>
@@ -129,7 +148,7 @@
                                  <div class="text-bg">
                                     <h1> <span class="blu">Bienvenido <br></span>Al sitio de los mejores Monitores</h1>
                                     <figure><img src="/static/images/monitorbanner_img.png" alt="#"/></figure>
-                                    <a class="read_more" href="#">Ver Mas</a>
+                                    <a class="read_more" href="/products/list-monitors/">Ver Mas</a>
                                  </div>
                               </div>
                            </div>
@@ -140,7 +159,7 @@
                                  <div class="text-bg">
                                     <h1> <span class="blu">Bienvenido <br></span>Al sitio con los mejores Perifericos</h1>
                                     <figure><img src="/static/images/dockingbanner_img.png" alt="#"/></figure>
-                                    <a class="read_more" href="#">Ver Mas</a>
+                                    <a class="read_more" href="/products/list-peripherals/">Ver Mas</a>
                                  </div>
                               </div>
                            </div>
@@ -169,7 +188,7 @@
                               <h2>Un poco de nosotros</h2>
                               <p>Somos una empresa dedicada a la comercialización online de productos informáticos de alta gama para empresas, profesionales y particulares.Nos centramos en la comercialización de Notebooks, Monitores de uso profesional y Estaciones de trabajo completas para profesionales y particulares.</p>
                            </div>
-                           <a class="read_more" href="#">Leer mas</a>
+                           <a class="read_more" href="/about/">Leer mas</a>
                         </div>
                      </div>
                   </div>

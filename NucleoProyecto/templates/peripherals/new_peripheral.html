@@ -1,24 +1,28 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Perifericos
+    Nuevo Periferico
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
 
-{% block cambio_contenido %}
-
-<h2>Crear un nuevo articulo de tipo Periferico</h2>
-
-<form action="" method="POST" enctype="multipart/form-data">
-{% csrf_token %}
+    <h2>Crear un nuevo articulo de tipo Periferico</h2>
     
-<table>
-    
-    {{form.as_table}}
-    
-</table>
-    
-<p><input type="submit" value="Enviar"></p>
-    
-</form>
-
-{% endblock %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <table>
+        
+            {{form.as_table}}
+        
+        </table>
+        
+        <p><input type="submit" value="Enviar"></p>
+        
+        </form>
+        
+    {% endblock %}   
+</body>
+</html>
