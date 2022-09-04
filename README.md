@@ -29,6 +29,8 @@ Desarrollo:
 - **Creacion y descripcion del README**
 - **Creacion del Video**
 
+
+--------------------------------------------------------------------------------------
 **Federico López**
 Realizó las siguientes tareas
 
