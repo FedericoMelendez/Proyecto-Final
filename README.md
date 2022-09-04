@@ -5,7 +5,10 @@
 - Pillow  9.2.0
 
 Alumno 
-- Federico Melendez. Realizó las siguientes tareas
+**Federico Melendez**. 
+
+Realizó las siguientes tareas
+
 Desarrollo:
 
 - **Creacion del proyecto con todos los modelos y elementos**
@@ -26,12 +29,14 @@ Desarrollo:
 - **Creacion y descripcion del README**
 - **Creacion del Video**
 
-- Federico López Realizó las siguientes tareas
+**Federico López**
+Realizó las siguientes tareas
+
 Desarrollo:
 
 **Creacion de Login, Logout y Register**
 
-
+--------------------------------------------------------------------------------------
 **Datos:**
 -  user: useradmin1
 -  pass: admin123
