@@ -4,6 +4,9 @@ from products.models import Notebooks, Monitores ,Perifericos
 from products.forms import Formulario_notebooks, Formulario_monitores, Formulario_perifericos
 from django.contrib.auth.decorators import login_required
 
+
+
+
 #  Notebooks
 @login_required
 def create_notebook(request): #Crear Notebook
@@ -279,4 +282,3 @@ def all_products(request):# Lista de todos los productos
         'peripherals':peripherals
     }
     return render(request, 'all_products.html', context=context)
-

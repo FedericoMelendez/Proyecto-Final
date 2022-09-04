@@ -1,25 +1,27 @@
-{% extends 'base.html' %}
-
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'index.html' %}
+    {% load static %}
 {% block titulo %}
-    Register
+    Logout
 {% endblock %}
+<body>
+    {% block cambio_contenido %}
+        <h3>Registro de Usuarios</h3>
 
-{% block cambio_contenido %}
+        <form action="" method="POST">
+        {% csrf_token %}
+        
+            <table>
+        
+                {{form.as_table}}
+        
+            </table>
+        
+            <p><input type="submit" value="Registrate!!"></p>
+        
+            </form>
 
-<h3>Registro de Usuarios</h3>
-
-<form action="" method="POST">
-{% csrf_token %}
-
-    <table>
-
-        {{form.as_table}}
-
-    </table>
-
-    <p><input type="submit" value="Registrate!!"></p>
-
-    </form>
-
-
-{% endblock %}
+    {% endblock %} 
+</body>
+</html>

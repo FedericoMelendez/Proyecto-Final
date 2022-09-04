@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from users.models import User_profile
+from django.forms import ModelForm
 
 from django import forms
 
@@ -14,3 +15,9 @@ class User_registration_form(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
         help_texts = {k:'' for k in fields}
+
+
+class User_profile_Form(ModelForm):
+    class Meta:
+        model = User_profile
+        fields = ['phone','name','lastname','adress','profile_image']
