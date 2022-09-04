@@ -49,12 +49,7 @@ def show_profile(request):
         return HttpResponse(request.user.profile.phone)
 
 def create_profile(request):#crea el perfil por primera vez
-    if request.method=='GET':
-        form = User_profile_Form()
-        context = {
-        'form' : form,
-        }
-    else:
+    if request.method=='POST':
         form = User_profile_Form(request.POST, request.FILES)
         if form.is_valid():
             User_profile.objects.create(
@@ -65,7 +60,13 @@ def create_profile(request):#crea el perfil por primera vez
                     adress = form.cleaned_data['adress'],
                     profile_image = form.cleaned_data['profile_image'],
             )
-    return render(request,'users/create_profile.html', context)
+            return redirect(login_request)
+    elif request.method == 'GET':
+            form = User_profile_Form()
+            context = {'form':form}
+            return render(request,'users/create_profile.html', context=context)
+
+
 
 def edit_profile (request, pk): #No pude hacer que funcione - Futuras pruebas. 
     if request.method == 'POST':
