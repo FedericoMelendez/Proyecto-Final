@@ -67,7 +67,7 @@ def create_profile(request):#crea el perfil por primera vez
             )
     return render(request,'users/create_profile.html', context)
 
-def edit_profile (request, pk):
+def edit_profile (request, pk): #No pude hacer que funcione - Futuras pruebas. 
     if request.method == 'POST':
         form = User_profile_Form(request.POST, request.FILES)
         if form.is_valid():

@@ -16,6 +16,5 @@ urlpatterns = [
     path ('', index, name='index'),
     path ('index/', index, name='index'),
     path('users/', include ('users.urls')),
-    path ('', about, name='about'),
     path ('about/', about, name='about'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

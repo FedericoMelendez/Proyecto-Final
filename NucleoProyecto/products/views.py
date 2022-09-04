@@ -252,7 +252,7 @@ def update_peripheral(request, pk):
 
 
 
-class Detail_peripheral(DetailView):
+class Detail_peripheral(DetailView): #Detalle de los perifericos
     model= Perifericos
     template_name= 'peripherals/detail_peripheral.html'
 
