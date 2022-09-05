@@ -37,6 +37,8 @@ Realizó las siguientes tareas
 Desarrollo:
 
 **Creacion de Login, Logout y Register**
+**Creación del about y su template inicial**
+**Creación del Readme inicial**
 
 --------------------------------------------------------------------------------------
 **Datos:**
